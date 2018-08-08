@@ -1,4 +1,4 @@
-#include "cropper.hpp"
+#include "conjuring/cropper.hpp"
 
 namespace pcg
 {

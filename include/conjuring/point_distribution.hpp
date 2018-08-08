@@ -1,8 +1,8 @@
 #ifndef PCG_POINT_DISTRIBUTION_HPP_
 #define PCG_POINT_DISTRIBUTION_HPP_
 
-#include <apex_base/Vector.h>
 #include <vector>
+#include "conjuring/glm/vec2.hpp"
 
 namespace pcg
 {
@@ -16,7 +16,7 @@ namespace pcg
 
     public:
 
-        static std::vector<Vector2> even(int num, int width, int height);
+        static std::vector<glm::vec2> even(int num, int width, int height);
 
     private:
     };

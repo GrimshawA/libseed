@@ -1,6 +1,4 @@
-#include "point_distribution.hpp"
-
-#include <apex_base/math/Math.h>
+#include "conjuring/point_distribution.hpp"
 
 #include <random>
 
@@ -11,13 +9,13 @@ namespace pcg
 
     }
 
-    std::vector<Vector2> point_distribution::even(int num, int width, int height)
+    std::vector<glm::vec2> point_distribution::even(int num, int width, int height)
     {
         std::default_random_engine generator;
         std::uniform_int_distribution<int> distribution(0,width);
         std::uniform_int_distribution<int> distribution2(0,height);
 
-        std::vector<Vector2> pts {num};
+        std::vector<glm::vec2> pts {num};
 
         for (auto& p : pts)
         {

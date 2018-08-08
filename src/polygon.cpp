@@ -1,4 +1,4 @@
-#include "polygon.hpp"
+#include "conjuring/polygon.hpp"
 
 #include "clipper/clipper.hpp"
 
@@ -9,7 +9,7 @@ namespace pcg
 
     }
 
-    polygon::polygon(const std::vector<Vector2>& pts)
+    polygon::polygon(const std::vector<glm::vec2>& pts)
     {
         _points = pts;
     }
@@ -23,8 +23,8 @@ namespace pcg
 
         for (int i = 1; i < _points.size(); ++i)
         {
-            Vector2 p1 = _points[i-1];
-            Vector2 p2 = _points[i];
+            glm::vec2 p1 = _points[i-1];
+            glm::vec2 p2 = _points[i];
             e.push_back(edge {p1, p2});
         }
 
@@ -34,7 +34,7 @@ namespace pcg
         return e;
     }
 
-    std::vector<Vector2> polygon::points() const
+    std::vector<glm::vec2> polygon::points() const
     {
         return _points;
     }
@@ -68,11 +68,11 @@ namespace pcg
         c.AddPaths(clip, ptClip, true);
         c.Execute(ctDifference, solution, pftNonZero, pftNonZero);
 
-        std::vector<Vector2> myPoints;
+        std::vector<glm::vec2> myPoints;
 
         for (auto& p : solution[0])
         {
-            myPoints.push_back(Vector2 {p.X, p.Y});
+            myPoints.push_back(glm::vec2 {p.X, p.Y});
         }
 
         _points = myPoints;
@@ -100,11 +100,11 @@ namespace pcg
         co.AddPath(subj, jtRound, etClosedPolygon);
         co.Execute(solution, width);
 
-        std::vector<Vector2> myPoints;
+        std::vector<glm::vec2> myPoints;
 
         for (auto& p : solution[0])
         {
-            myPoints.push_back(Vector2 {p.X, p.Y});
+            myPoints.push_back(glm::vec2 {p.X, p.Y});
         }
 
         _points = myPoints;
@@ -112,10 +112,10 @@ namespace pcg
 
     polygon polygon::from_rectangle(const rectangle& rect)
     {
-        Vector2 topLeft = rect.getTopLeft();
-        Vector2 topRight = rect.getTopRight();
-        Vector2 bottomLeft = rect.getBottomLeft();
-        Vector2 bottomRight = rect.getBottomRight();
+        glm::vec2 topLeft = rect.getTopLeft();
+        glm::vec2 topRight = rect.getTopRight();
+        glm::vec2 bottomLeft = rect.getBottomLeft();
+        glm::vec2 bottomRight = rect.getBottomRight();
 
         return polygon {{topLeft, topRight, bottomRight, bottomLeft}};
     }
@@ -174,11 +174,11 @@ namespace pcg
             c.AddPaths(clip, ptClip, true);
             c.Execute(ctDifference, solution, pftNonZero, pftNonZero);
 
-            std::vector<Vector2> myPoints;
+            std::vector<glm::vec2> myPoints;
 
             for (auto& p : solution[0])
             {
-                myPoints.push_back(Vector2 {p.X, p.Y});
+                myPoints.push_back(glm::vec2 {p.X, p.Y});
             }
 
             return polygon {myPoints};

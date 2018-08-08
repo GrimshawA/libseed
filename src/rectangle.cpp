@@ -1,4 +1,4 @@
-#include "rectangle.hpp"
+#include "conjuring/rectangle.hpp"
 
 namespace pcg
 {
@@ -7,7 +7,7 @@ namespace pcg
 
     }
 
-    rectangle::rectangle(Vector2 center, float extents)
+    rectangle::rectangle(glm::vec2 center, float extents)
     {
         _center = center;
         _width = _height = extents;
@@ -19,7 +19,7 @@ namespace pcg
         _height += heightExpansion;
     }
 
-    std::vector<rectangle> rectangle::from_points(const std::vector<Vector2>& pts)
+    std::vector<rectangle> rectangle::from_points(const std::vector<glm::vec2>& pts)
     {
         std::vector<rectangle> rects {pts.size()};
 

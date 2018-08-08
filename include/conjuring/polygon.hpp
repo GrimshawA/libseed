@@ -1,15 +1,15 @@
 #ifndef PCG_POLYGON_HPP_
 #define PCG_POLYGON_HPP_
 
-#include <apex_base/Vector.h>
 #include <vector>
 #include "rectangle.hpp"
+#include "conjuring/glm/vec2.hpp"
 
 namespace pcg
 {
     struct edge
     {
-        Vector2 p1, p2;
+        glm::vec2 p1, p2;
     };
 
     /*
@@ -19,11 +19,11 @@ namespace pcg
     {
     public:
         explicit polygon();
-        explicit polygon(const std::vector<Vector2>& pts);
+        explicit polygon(const std::vector<glm::vec2>& pts);
 
 
         std::vector<edge> edges();
-        std::vector<Vector2> points() const;
+        std::vector<glm::vec2> points() const;
 
         void clip(const std::vector<polygon>& clipGroup);
         void inset(int width);
@@ -36,7 +36,7 @@ namespace pcg
         static std::vector<polygon> clip_group(const std::vector<polygon>& polys);
 
     private:
-        std::vector<Vector2> _points;
+        std::vector<glm::vec2> _points;
     };
 }
 

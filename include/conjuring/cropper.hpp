@@ -1,7 +1,6 @@
 #ifndef PCG_CROPPER_HPP_
 #define PCG_CROPPER_HPP_
 
-#include <apex_base/Vector.h>
 #include <vector>
 
 namespace pcg
