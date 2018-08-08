@@ -1,6 +1,7 @@
 #include "conjuring/point_distribution.hpp"
 
 #include <random>
+#include <cstdint>
 
 namespace pcg
 {
@@ -15,7 +16,7 @@ namespace pcg
         std::uniform_int_distribution<int> distribution(0,width);
         std::uniform_int_distribution<int> distribution2(0,height);
 
-        std::vector<glm::vec2> pts {num};
+		std::vector<glm::vec2> pts(num);
 
         for (auto& p : pts)
         {
